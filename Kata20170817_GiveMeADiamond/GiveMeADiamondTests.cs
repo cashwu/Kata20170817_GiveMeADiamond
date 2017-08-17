@@ -50,16 +50,20 @@ namespace Kata20170817_GiveMeADiamond
             }
 
             var result = new List<string>();
-            for (int i = 1; i <= n * 1.0 / 2; i++)
+            var center = n * 1.0 / 2;
+            for (int i = 1; i <= center; i++)
             {
-                result.Add(new string(' ', i) + new string('*', i * 2 -1) + "\n");
+                result.Insert(i - 1, Item(i));
+                result.Insert(i, Item(i));
             }
-            var downList = new List<string>(result);
-            downList.Reverse();
-            result.Add(new string('*', n) + "\n");
-            result.AddRange(downList);
+            result.Insert((int)center, new string('*', n) + "\n");
 
             return string.Concat(result);
+        }
+
+        private static string Item(int i)
+        {
+            return new string(' ', i) + new string('*', i * 2 -1) + "\n";
         }
     }
 }
