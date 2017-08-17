@@ -38,6 +38,28 @@ namespace Kata20170817_GiveMeADiamond
             DiamondPrintShouldBe("  *\n ***\n*****\n ***\n  *\n", 5);
         }
 
+        [TestMethod]
+        public void input_15_diamond()
+        {
+            var expected = new StringBuilder();
+            expected.Append("       *\n");
+            expected.Append("      ***\n");
+            expected.Append("     *****\n");
+            expected.Append("    *******\n");
+            expected.Append("   *********\n");
+            expected.Append("  ***********\n");
+            expected.Append(" *************\n");
+            expected.Append("***************\n");
+            expected.Append(" *************\n");
+            expected.Append("  ***********\n");
+            expected.Append("   *********\n");
+            expected.Append("    *******\n");
+            expected.Append("     *****\n");
+            expected.Append("      ***\n");
+            expected.Append("       *\n");
+            DiamondPrintShouldBe(expected.ToString(), 15);
+        }
+
         private static void DiamondPrintShouldBe(string expected, int count)
         {
             var diamond = new Diamond();
@@ -57,19 +79,21 @@ namespace Kata20170817_GiveMeADiamond
 
             var result = new List<string>();
             var center = (int)(n * 1.0 / 2);
+            var space = center;
             for (int i = 1; i <= center; i++)
             {
-                result.Insert(i - 1, Item(i, n));
-                result.Insert(i, Item(i, n));
+                result.Insert(i - 1, Item(i, space));
+                result.Insert(i, Item(i, space));
+                space--;
             }
             result.Insert(center, new string('*', n) + "\n");
 
             return string.Concat(result);
         }
 
-        private static string Item(int i, int n)
+        private static string Item(int i, int space)
         {
-            return new string(' ', (n - i) / 2) + new string('*', i * 2 - 1) + "\n";
+            return new string(' ', space) + new string('*', i * 2 - 1) + "\n";
         }
     }
 }
