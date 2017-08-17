@@ -12,6 +12,12 @@ namespace Kata20170817_GiveMeADiamond
             DiamondPrintShouldBe("*\n", 1);
         }
 
+        [TestMethod]
+        public void input_2_diamond()
+        {
+            DiamondPrintShouldBe(null, 2);
+        }
+
         private static void DiamondPrintShouldBe(string expected, int count)
         {
             var diamond = new Diamond();
@@ -24,6 +30,10 @@ namespace Kata20170817_GiveMeADiamond
     {
         public string print(int n)
         {
+            if (n % 2 == 0)
+            {
+                return null;
+            }
             return "*\n";
         }
     }
