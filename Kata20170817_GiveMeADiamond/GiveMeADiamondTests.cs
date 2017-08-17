@@ -49,9 +49,8 @@ namespace Kata20170817_GiveMeADiamond
                 return null;
             }
 
-            var center = n * 1.0 / 2 + 1;
             var result = new List<string>();
-            for (int i = 1; i <= center - 1; i++)
+            for (int i = 1; i <= n * 1.0 / 2; i++)
             {
                 result.Add(new string(' ', i) + new string('*', i * 2 -1) + "\n");
             }
