@@ -32,6 +32,12 @@ namespace Kata20170817_GiveMeADiamond
             DiamondPrintShouldBe(" *\n***\n *\n", 3);
         }
 
+        [TestMethod]
+        public void input_5_diamond()
+        {
+            DiamondPrintShouldBe("  *\n ***\n*****\n ***\n  *\n", 5);
+        }
+
         private static void DiamondPrintShouldBe(string expected, int count)
         {
             var diamond = new Diamond();
@@ -50,20 +56,20 @@ namespace Kata20170817_GiveMeADiamond
             }
 
             var result = new List<string>();
-            var center = n * 1.0 / 2;
+            var center = (int)(n * 1.0 / 2);
             for (int i = 1; i <= center; i++)
             {
-                result.Insert(i - 1, Item(i));
-                result.Insert(i, Item(i));
+                result.Insert(i - 1, Item(i, n));
+                result.Insert(i, Item(i, n));
             }
-            result.Insert((int)center, new string('*', n) + "\n");
+            result.Insert(center, new string('*', n) + "\n");
 
             return string.Concat(result);
         }
 
-        private static string Item(int i)
+        private static string Item(int i, int n)
         {
-            return new string(' ', i) + new string('*', i * 2 -1) + "\n";
+            return new string(' ', (n - i) / 2) + new string('*', i * 2 - 1) + "\n";
         }
     }
 }
